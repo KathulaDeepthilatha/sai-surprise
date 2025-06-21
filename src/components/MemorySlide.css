@@ -1,0 +1,113 @@
+.memory-slide-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #eff6ff, #e0e7ff);
+  display: flex;
+  flex-direction: column;       /* Stack card and buttons vertically */
+  align-items: center;
+  justify-content: flex-start;  /* Align to top */
+  padding: 3rem 1rem 1rem;     /* Top padding for space, bottom padding for buttons */
+  box-sizing: border-box;
+}
+
+.memory-card {
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  max-width: 700px;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.memory-card:hover {
+  transform: scale(1.01);
+}
+
+.media-area {
+  background-color: #f3f4f6;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+.memory-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.memory-content {
+  padding: 2rem;
+  text-align: center;
+}
+
+.memory-caption {
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.memory-message {
+  color: #4b5563;
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.memory-final {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #f5f3ff, #fce7f3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.final-heart {
+  font-size: 4rem;
+  color: #fb7185;
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+}
+
+.final-message {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #374151;
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+.memory-nav-buttons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.memory-nav-buttons button {
+  background: #ffffffcc;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.memory-nav-buttons button:hover {
+  background: #f3f4f6;
+}
+
+.memory-nav-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+

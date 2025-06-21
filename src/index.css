@@ -1,0 +1,35 @@
+.memory-slide-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom right, #eff6ff, #e0e7ff);
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.navigation-below-card {
+  margin-top: 1.5rem; /* 👈 This is your 5–6 spacing */
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navigation-below-card button {
+  background: #ffffffcc;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navigation-below-card button:hover {
+  background: #f3f4f6;
+}
+
+.navigation-below-card button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
