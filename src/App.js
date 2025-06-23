@@ -42,19 +42,17 @@ const App = () => {
     return <WelcomeScreen onNext={handleNext} />;
   }
 
-  return (
-    <>
-  <div className="memory-slide-wrapper">
+return (
+ <div className="memory-slide-wrapper">
+  <div className="memory-content-wrapper">
     <MemorySlide memory={memories[currentSlide]} />
-    
-    <div className="navigation-below-card">
+    <div className="navigation-buttons">
       <button onClick={handlePrev} disabled={currentSlide === 0}>← Prev</button>
       <button onClick={handleNext} disabled={currentSlide === memories.length - 1}>Next →</button>
     </div>
   </div>
-</>
-
-  );
+</div>
+);
 };
 
 export default App;

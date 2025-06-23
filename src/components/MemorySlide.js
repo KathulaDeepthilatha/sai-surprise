@@ -12,7 +12,7 @@ const MemorySlide = ({ memory }) => {
   }
 
   return (
-    <div className="memory-slide-container">
+    <div className="memory-slide">
       <div className="memory-card">
         <div className="media-area">
           {memory.type === 'image' ? (

@@ -4,7 +4,7 @@ import './WelcomeScreen.css'; // 👈 Link to CSS file
 import App from '../App';
 
 const WelcomeScreen = ({ onNext }) => (
-  <div className="welcome-container">
+  <div className="welcome">
     <div className="welcome-content">
       <div className="heart-container">
         <Heart className="heart-icon" />

@@ -1,20 +1,29 @@
 .memory-slide-wrapper {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   background: linear-gradient(to bottom right, #eff6ff, #e0e7ff);
-  padding: 2rem 1rem;
   min-height: 100vh;
+  padding: 2rem 1rem;
   box-sizing: border-box;
 }
 
-.navigation-below-card {
-  margin-top: 1.5rem; /* 👈 This is your 5–6 spacing */
+/* Grouping memory card and buttons together */
+.memory-content-wrapper {
   display: flex;
-  gap: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* This controls space between card and buttons */
 }
 
-.navigation-below-card button {
+/* Unified navigation button styling */
+.navigation-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.navigation-buttons button {
   background: #ffffffcc;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -25,11 +34,11 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.navigation-below-card button:hover {
+.navigation-buttons button:hover {
   background: #f3f4f6;
 }
 
-.navigation-below-card button:disabled {
+.navigation-buttons button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
