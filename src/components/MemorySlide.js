@@ -7,20 +7,20 @@ const MemorySlide = ({ memory }) => {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    // Trigger animation when component mounts
-    setAnimate(false); // reset
-    requestAnimationFrame(() => setAnimate(true)); // next tick
+    setAnimate(false);
+    requestAnimationFrame(() => setAnimate(true));
   }, [memory]);
 
-console.log('memory.src is:', memory.src);
- const handleImageError = (e) => {
-      console.log('Image failed to load:', memory.src);
-      console.log('Error:', e);
-    };
+  const handleImageError = (e) => {
+    console.log('Image failed to load:', memory.src);
+  };
 
-    const handleImageLoad = () => {
-      console.log('Image loaded successfully:', memory.src);
-    };
+  const getSrc = () => {
+    if (memory.type === 'image') {
+      return `http://localhost:5000/uploads/${memory.src}`;
+    }
+    return memory.src;
+  };
 
   if (memory.type === "final") {
     return (
@@ -42,29 +42,19 @@ console.log('memory.src is:', memory.src);
       <div className={`memory-card ${animate ? "animate" : ""}`}>
         <div className="media-area">
           {memory.type === "image" ? (
-            <>
             <img
-              src={memory.src}
+              src={getSrc()}
               alt={memory.caption}
               className="memory-image"
               onError={handleImageError}
-              onLoad={handleImageLoad}
             />
-                </>
           ) : (
-            <div className="media-area">
-              <video
-                className="memory-image"
-                controls
-                poster="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&h=600&fit=crop"
-              >
-                <source src={memory.src} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+            <video className="memory-image" controls>
+              <source src={memory.src} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           )}
         </div>
-
         <div className="memory-content">
           <h2 className={`memory-caption ${animate ? "animate" : ""}`}>
             {memory.caption}
