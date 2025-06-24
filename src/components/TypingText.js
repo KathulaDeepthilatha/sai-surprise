@@ -5,21 +5,40 @@ const TypingText = ({ text, speed = 50 }) => {
 
   useEffect(() => {
     let currentIndex = 0;
-    setDisplayedText(""); // Reset on mount
+    let timeout;
 
-    const interval = setInterval(() => {
-      if (currentIndex < text.length) {
-        setDisplayedText((prev) => prev + text[currentIndex]);
+    const typeNextChar = () => {
+      if (currentIndex <= text.length) {
+        setDisplayedText(text.slice(0, currentIndex));
         currentIndex++;
-      } else {
-        clearInterval(interval);
+        timeout = setTimeout(typeNextChar, speed);
       }
-    }, speed);
+    };
 
-    return () => clearInterval(interval);
-  }, [text]);
+    typeNextChar(); // Start typing
 
-  return <p className="memory-message">{displayedText}</p>;
+    return () => clearTimeout(timeout);
+  }, [text, speed]);
+
+  return (
+    <div
+      style={{
+        color: "#f1f5f9", // soft white-gray for dark background
+        fontSize: "clamp(1.1rem, 4vw, 1.7rem)",
+        lineHeight: 1.7,
+        textAlign: "center",
+        padding: "1rem",
+        fontWeight: 300,
+        wordBreak: "break-word",
+        whiteSpace: "pre-wrap",
+        maxWidth: "90%",
+        margin: "0 auto",
+        overflowWrap: "break-word",
+      }}
+    >
+      {displayedText}
+    </div>
+  );
 };
 
 export default TypingText;

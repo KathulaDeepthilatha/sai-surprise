@@ -7,10 +7,11 @@ import { BASE_URL } from "../config";
 const MemorySlide = ({ memory }) => {
   const [animate, setAnimate] = useState(false);
 
-  useEffect(() => {
-    setAnimate(false);
-    requestAnimationFrame(() => setAnimate(true));
-  }, [memory]);
+useEffect(() => {
+  setAnimate(false);
+  const timeout = setTimeout(() => setAnimate(true), 10); // delay ensures DOM updates
+  return () => clearTimeout(timeout);
+}, [memory?.src]);
 
   const handleImageError = (e) => {
     console.log('Image failed to load:', memory.src);

@@ -53,7 +53,10 @@ const App = () => {
         <WelcomeScreen onNext={handleNext} />
       ) : (
         <>
-          <MemorySlide memory={memories[currentSlide]} />
+          <MemorySlide
+  memory={memories[currentSlide]}
+  key={memories[currentSlide]?.src || currentSlide}
+/>
           <Navigation
             currentSlide={currentSlide}
             totalSlides={memories.length}
