@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import WelcomeScreen from './components/WelcomeScreen';
 import MemorySlide from './components/MemorySlide';
+import Navigation from './components/Navigation';
+import ProgressBar from './components/ProgressBar';
+import './index.css';
+
+
 
 const App = () => {
   const [currentSlide, setCurrentSlide] = useState(-1); // -1 means welcome
@@ -8,7 +13,7 @@ const App = () => {
   const memories = [
     {
       type: 'image',
-      src: 'https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?w=800&h=600&fit=crop',
+      src: '/trip.jpeg', 
       caption: 'Our first adventure together',
       message: 'Remember this beautiful day? You made everything perfect just by being there.'
     },
@@ -20,7 +25,7 @@ const App = () => {
     },
     {
       type: 'image',
-      src: 'https://images.unsplash.com/photo-1493612276216-ee3925520721?w=800&h=600&fit=crop',
+      src: '/IMG-20240604-WA0065.jpg',
       caption: 'Just because',
       message: 'Every moment with you feels like a dream I never want to wake up from.'
     },
@@ -38,21 +43,55 @@ const App = () => {
     setCurrentSlide((prev) => Math.max(prev - 1, -1));
   };
 
-  if (currentSlide === -1) {
-    return <WelcomeScreen onNext={handleNext} />;
-  }
+  return (
+    <>
+      {/* 🌌 Starry Night Background with Moon & Shooting Stars */}
+      <div className="starry-background">
+        <div className="moon" />
 
-return (
- <div className="memory-slide-wrapper">
-  <div className="memory-content-wrapper">
-    <MemorySlide memory={memories[currentSlide]} />
-    <div className="navigation-buttons">
-      <button onClick={handlePrev} disabled={currentSlide === 0}>← Prev</button>
-      <button onClick={handleNext} disabled={currentSlide === memories.length - 1}>Next →</button>
-    </div>
-  </div>
-</div>
-);
+        {/* Twinkling stars */}
+        {Array.from({ length: 100 }).map((_, i) => {
+          const size = Math.random() * 2 + 1;
+          const top = Math.random() * 100;
+          const left = Math.random() * 100;
+          const delay = Math.random() * 5;
+          return (
+            <div
+              key={`star-${i}`}
+              className="star"
+              style={{
+                width: `${size}px`,
+                height: `${size}px`,
+                top: `${top}%`,
+                left: `${left}%`,
+                animationDelay: `${delay}s`
+              }}
+            />
+          );
+        })}
+      </div>
+
+      {/* Memory Content or Welcome */}
+      {currentSlide === -1 ? (
+        <WelcomeScreen onNext={handleNext} />
+      ) : (
+        <>
+          <MemorySlide key={currentSlide} memory={memories[currentSlide]} />
+          <Navigation
+            currentSlide={currentSlide}
+            totalSlides={memories.length}
+            onPrev={handlePrev}
+            onNext={handleNext}
+            canGoPrev={currentSlide > 0}
+            canGoNext={currentSlide < memories.length - 1}
+          />
+          <ProgressBar currentSlide={currentSlide} totalSlides={memories.length} />
+        </>
+      )}
+    </>
+  );
 };
 
 export default App;
+
+

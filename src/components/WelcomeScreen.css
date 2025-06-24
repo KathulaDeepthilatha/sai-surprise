@@ -4,8 +4,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom right, #fdf2f8, #fce7f3);
-  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+  /* background: linear-gradient(to bottom right, #fdf2f8, #fce7f3); */
+  background-color: transparent;
 }
 
 /* Content box */
@@ -33,14 +33,14 @@
 .welcome-title {
   font-size: 2.3rem;
   font-weight: 350;
-  color: #1f2937;
+  color: #bcc6d4;
   margin-bottom: 1.5rem;
   animation: fadeIn 0.8s ease-out;
 }
 
 /* Description */
 .welcome-description {
-  color: #4b5563;
+  color: #a2abb9;
   margin-bottom: 2rem;
   font-size: 1.3rem;
   font-weight: 300;
@@ -91,5 +91,25 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-title {
+    font-size: 1.8rem;
+  }
+
+  .welcome-description {
+    font-size: 1.1rem;
+  }
+
+  .welcome-button {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .heart-icon {
+    width: 3rem;
+    height: 3rem;
   }
 }

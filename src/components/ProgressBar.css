@@ -1,0 +1,14 @@
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #e5e7eb;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #fb7185, #ec4899);
+  transition: width 0.5s ease;
+}

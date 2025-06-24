@@ -1,43 +1,79 @@
 .memory-slide {
-  /* min-height: 100vh; */
-  background: linear-gradient(to bottom right, #eff6ff, #e0e7ff);
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;       /* Stack card and buttons vertically */
+  flex-direction: column;
   align-items: center;
-  /* justify-content: flex-start;   */
-  padding: 0rem 1rem 1rem;     /* Top padding for space, bottom padding for buttons */
+  justify-content: center;
+  /* background: linear-gradient(to bottom right, #eff6ff, #e0e7ff); */
+  background-color: transparent;
+  padding: 1rem;
+  padding-bottom: 7rem;
+   padding-top: 5rem;
   box-sizing: border-box;
 }
 
 .memory-card {
-  background-color: #ffffff;
-  border-radius: 1.5rem;
+  background-color: white;
+  border-radius: 1rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   overflow: hidden;
-  max-width: 700px;
   width: 100%;
-  transition: transform 0.3s ease;
+  max-width: 600px;
 }
 
-.memory-card:hover {
-  transform: scale(1.01);
+.memory-card.animate {
+  animation: fadeInUp 0.6s ease-out;
 }
+
+@media (max-width: 768px) {
+  .memory-card {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .memory-card:hover {
+    transform: translateY(-5px) scale(1.01);
+  }
+
+  .media-area {
+    aspect-ratio: auto;       /* Remove fixed ratio */
+    height: 300px;            /* Increase height */
+  }
+
+  .memory-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .memory-content {
+    padding: 1.5rem;
+  }
+
+  .memory-caption {
+    font-size: 1.5rem;
+  }
+
+  .memory-message {
+    font-size: 1.1rem;
+  }
+}
+
 
 .media-area {
-  background-color: #f3f4f6;
   aspect-ratio: 16 / 9;
+  position: relative;
+  background-color: #f3f4f6;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .memory-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* This will crop the video/image to fit without distortion */
-  display: block;
-}
-
-video.memory-image::-webkit-media-controls {
-  display: none;
+  object-fit: cover;
 }
 
 .memory-content {
@@ -46,7 +82,7 @@ video.memory-image::-webkit-media-controls {
 }
 
 .memory-caption {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 300;
   color: #1f2937;
   margin-bottom: 1rem;
@@ -59,30 +95,40 @@ video.memory-image::-webkit-media-controls {
   line-height: 1.75;
 }
 
+.memory-caption.animate,
+.memory-message.animate {
+  animation: slideInText 0.8s ease both;
+}
+
+/* Final slide styles */
 .memory-final {
-  /* min-height: 100vh; */
-  background: linear-gradient(to bottom right, #f5f3ff, #fce7f3);
+  min-height: 100vh;
   display: flex;
-  /* flex-direction: column;
-  justify-content: center; */
   align-items: center;
-  padding: 2rem;
+  justify-content: center;
+  /* background: linear-gradient(to bottom right, #faf5ff, #fdf2f8); */
+  background-color: transparent;
   text-align: center;
+  padding: 2rem;
 }
 
 .final-heart {
-  font-size: 4rem;
-  color: #fb7185;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.final-heart-icon {
+  width: 5rem;
+  height: 5rem;
+  color: #ef4444;
   animation: pulse 2s infinite;
 }
 
-.final-message {
+.memory-final .final-message-text {
   font-size: 1.5rem;
   font-weight: 300;
-  color: #374151;
-  max-width: 600px;
-  line-height: 1.8;
+  color: #fff5f5 !important; /* ✅ Force white color */
+  line-height: 1.75;
+  text-align: center;
 }
 
 @keyframes pulse {
@@ -90,3 +136,71 @@ video.memory-image::-webkit-media-controls {
   50% { opacity: 0.5; }
 }
 
+/* Keyframe animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideInText {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .memory-slide {
+    padding: 1rem 0.5rem 6rem;
+  }
+
+  .memory-content {
+    padding: 1rem;
+  }
+
+  .memory-caption {
+    font-size: 1.2rem;
+  }
+
+  .memory-message {
+    font-size: 1rem;
+  }
+
+  .navigation-buttons {
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .navigation-buttons button {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .media-area {
+    height: auto;
+    max-height: 300px;
+  }
+
+    .memory-final .final-message-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    padding: 0 1rem;
+  }
+
+  .final-heart-icon {
+    width: 4rem;
+    height: 4rem;
+  }
+  
+}
