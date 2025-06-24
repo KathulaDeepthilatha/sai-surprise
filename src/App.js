@@ -4,13 +4,14 @@ import MemorySlide from './components/MemorySlide';
 import Navigation from './components/Navigation';
 import ProgressBar from './components/ProgressBar';
 import './index.css';
+import { BASE_URL } from "./config";
 
 const App = () => {
   const [currentSlide, setCurrentSlide] = useState(-1);
   const [memories, setMemories] = useState([]);
 
  useEffect(() => {
-  fetch('http://localhost:5000/api/memories')
+  fetch(`${BASE_URL}/api/memories`)
     .then(res => res.json())
     .then(data => {
       console.log("Fetched memories:", data); // <-- ADD THIS

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./MemorySlide.css";
 import { Heart } from "lucide-react";
 import TypingText from "./TypingText";
+import { BASE_URL } from "../config";
 
 const MemorySlide = ({ memory }) => {
   const [animate, setAnimate] = useState(false);
@@ -17,7 +18,7 @@ const MemorySlide = ({ memory }) => {
 
   const getSrc = () => {
     if (memory.type === 'image') {
-      return `http://localhost:5000/uploads/${memory.src}`;
+      return `${BASE_URL}/uploads/${memory.src}`;
     }
     return memory.src;
   };
